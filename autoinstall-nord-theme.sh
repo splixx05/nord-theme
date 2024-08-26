@@ -1,6 +1,79 @@
 #!/bin/bash
 
 
+# Download ressources
+cd ~/res/repo
+git clone git@github.com:splixx05/theme-nord.git
+
+
+
+# Installing gtk-theme
+cd ~/res/repo/theme-nord/WhiteSur-gtk-theme/
+./install.sh --nord
+
+
+
+# Installing icons
+cd ~/res/repo/theme-nord/Nordzy-icon/
+./install.sh --total
+
+
+
+# Installing cursors
+cd ~/res/repo/theme-nord/Nordzy-cursors/
+./install.sh
+
+
+
+# Installing fonts
+mv ~/res/repo/theme-nord/fonts ~/.local/share
+
+
+
+# Installing wallpaper
+mkdir -p ~/Pictures/Wallpaper
+mv ~/res/repo/theme-nord/wallpaper ~/Pictures/Wallpaper
+
+
+
+
+# Installing ulauncher-theme
+sudo gdebi install-y ./ulauncher_5.14.7_all.deb
+mkdir -p ~/.config/ulauncher/user-themes
+mv ~/res/repo/theme-nord/nordzy-dark-green ~/.config/ulauncher/user-themes
+mv ~/res/repo/theme-nord/nordzy-dark-green/ulauncher.desktop ~/.config/autostart
+
+
+
+# Installing conky
+mkdir -p ~/.config/conky
+mv ~/res/repo/theme-nord/conky/grumimosa ~/.config/conky
+mv ~/res/repo/theme-nord/conky/conky-startup.desktop ~/.config/autostart
+echo 'MUFFIN_NO_SHADOWS=1' | sudo tee -a /etc/environment
+
+
+# Installing glava
+sudo nala install -y libgl1-mesa-dev libpulse0 libpulse-dev libxext6 libxext-dev libxrender-dev libxcomposite-dev liblua5.3-dev liblua5.3 lua-lgi lua-filesystem libobs0 libobs-dev meson
+
+cd ~/res/repo/theme-nord/glava
+meson build --prefix /usr
+ninja -C build
+sudo ninja -C build install
+glava --copy-config
+mv ~/.config/glava/radial.glsl ~/.config/glava/radial.glsl.00
+mv ~/.config/glava/rc.glsl00 ~/.config/glava/rc.glsl.00
+mv ~/res/repo/theme-nord/glava-config/radial.glsl ~/.config/glava/
+mv ~/res/repo/theme-nord/glava-config/rc.glsl ~/.config/glava/
+mv ~/res/repo/theme-nord/glava-config/glava-startup.desktop ~/.config/autostart
+
+
+:'# Restore configs
+cd ~/res/repo/theme-nord/cinnamon-nord.conf
+dconf load /org/cinnamon/ < cinnamon-nord.conf'
+
+
+
+
 
 : ' Check if PATH exists
 if [ ! -f ~/PATH ]; then
@@ -9,80 +82,3 @@ if [ ! -f ~/PATH ]; then
 else
   echo "~/PATH already exists"
 fi '
-
-# Download ressources
-cd ~/Downloads
-git clone git@github.com:vinceliuice/WhiteSur-gtk-theme.git
-git clone git@github.com:alvatip/Nordzy-icon.git
-git clone git@github.com:alvatip/Nordzy-cursors.git
-
-
-
-# Installing gtk-theme
-cd WhiteSur-gtk-theme/
-./install.sh --nord
-
-
-
-# Installing icons
-cd ~/Downloads/Nordzy-icon/
-./install.sh --total
-
-
-
-# Installing cursors
-cd ~/Downloads/Nordzy-cursors/
-./install.sh
-
-
-
-
-# Installing fonts
-# cd ~/Downloads/name-of-repo/name-of-file
-mv ~/Downloads/fonts ~/.fonts
-
-
-
-# Installing wallpaper
-mkdir -p ~/Pictures/Wallpaper
-# cd ~/Downloads/name-of-repo/name-of-file
-mv ~/Downloads/wallpaper/bild.jpg ~/Pictures/Wallpaper/bild.jpg
-# gsettings change wallpaper
-
-
-
-# Restore configs
-cd ~/Downloads/name-of-repo/cinnamon-nord.conf
-dconf load /org/cinnamon/ < cinnamon-nord.conf
-
-
-
-# Installing ulauncher-theme
-sudo nala install-y ./ulauncher_5.14.7_all.deb
-mkdir -p ~/.config/ulauncher/user-themes
-mv ~/Downloads/name-of-repo/name-of-file ~/.config/ulauncher/user-themes/name-of-file
-mv ~/Downloads/name-of-repo/ulauncher.desktop ~/.config/autostart/ulauncher.desktop
-
-
-
-# Installing conky
-mkdir -p ~/.config/conky
-mv ~/Downloads/name-of-repo/name-of-file ~/.config/conky/name-of-file
-mv ~/Downloads/name-of-repo/conky-startup.desktop ~/.config/autostart/conky-startup.desktop
-echo 'MUFFIN_NO_SHADOWS=1' | sudo tee -a /etc/environment
-
-
-
-
-# Installing glava
-sudo nala install -y libgl1-mesa-dev libpulse0 libpulse-dev libxext6 libxext-dev libxrender-dev libxcomposite-dev liblua5.3-dev liblua5.3 lua-lgi lua-filesystem libobs0 libobs-dev meson
-
-git clone https://github.com/jarcode-foss/glava
-cd glava
-meson build --prefix /usr
-ninja -C build
-sudo ninja -C build install
-
-
-
-
