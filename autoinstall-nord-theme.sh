@@ -2,6 +2,14 @@
 
 
 
+: ' Check if PATH exists
+if [ ! -f ~/PATH ]; then
+  touch ~/PATH
+  echo "~/PATH have been written"
+else
+  echo "~/PATH already exists"
+fi '
+
 # Download ressources
 cd ~/Downloads
 git clone git@github.com:vinceliuice/WhiteSur-gtk-theme.git
@@ -26,11 +34,6 @@ cd ~/Downloads/Nordzy-icon/
 cd ~/Downloads/Nordzy-cursors/
 ./install.sh
 
-
-
-# Installing cursors
-cd ~/Downloads/Nordzy-cursors/
-./install.sh
 
 
 
@@ -68,6 +71,17 @@ mv ~/Downloads/name-of-repo/name-of-file ~/.config/conky/name-of-file
 mv ~/Downloads/name-of-repo/conky-startup.desktop ~/.config/autostart/conky-startup.desktop
 echo 'MUFFIN_NO_SHADOWS=1' | sudo tee -a /etc/environment
 
+
+
+
+# Installing glava
+sudo nala install -y libgl1-mesa-dev libpulse0 libpulse-dev libxext6 libxext-dev libxrender-dev libxcomposite-dev liblua5.3-dev liblua5.3 lua-lgi lua-filesystem libobs0 libobs-dev meson
+
+git clone https://github.com/jarcode-foss/glava
+cd glava
+meson build --prefix /usr
+ninja -C build
+sudo ninja -C build install
 
 
 
