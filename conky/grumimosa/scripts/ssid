@@ -9,9 +9,9 @@ SSID_NAME=$(/sbin/iwgetid -r)
 
 if [[ "${SSID_NAME}" != "" ]]; then
 	if  [[ $1 = "-i" ]]; then
-    echo "  ${SSID_NAME}"
+    echo "  Connected"
 	else
-    echo "${SSID_NAME}"
+    echo "Connected"
 	fi
 else
 echo "Not Connected"

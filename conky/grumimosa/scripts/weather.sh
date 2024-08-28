@@ -7,7 +7,7 @@
 # you can use this or replace with yours
 api_key=60d7b980f7da638967fed7f0aaf80f84
 # get your city id at https://openweathermap.org/find and replace
-city_id=2643743
+city_id=2659516
 
 url="api.openweathermap.org/data/2.5/weather?id=${city_id}&appid=${api_key}&cnt=5&units=metric&lang=en"
 curl ${url} -s -o ~/.cache/weather.json
