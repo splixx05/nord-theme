@@ -3,7 +3,7 @@
 //
 
 // Colorscheme type
-$colorscheme: 'default'; // default/nord
+$colorscheme: 'nord'; // default/nord
 
 // Nautilus sidebar sizes (when nautilus_use_colors is false)
 $sidebar_size: 200px;
@@ -15,7 +15,7 @@ $nautilus_style: 'stable';
 $placement: 'left';
 
 // Gnome-shell panel opacity
-$panel_opacity: 0.5;
+$panel_opacity: 0.15;
 
 // Gnome-shell show apps button style
 $showapps_button: 'bigsur';
@@ -24,7 +24,7 @@ $showapps_button: 'bigsur';
 $max_window_style: 'square';
 
 // Panel font color
-$panel_font: 'black';
+$panel_font: 'white';
 
 // Panel height size
 $panel_size: 'default';
@@ -33,7 +33,7 @@ $panel_size: 'default';
 $activities: 'default';
 
 // Monterey style
-$monterey: 'true';
+$monterey: 'false';
 
 // Color style
 $darker: 'false';
