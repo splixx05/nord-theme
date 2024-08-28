@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Exec=/home/ricky/.config/conky/grumimosa/start.sh
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=conky-startup.desktop
+Comment[en_US]=conky-startup
+X-GNOME-Autostart-Delay=3
